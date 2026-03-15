@@ -1,0 +1,8 @@
+cd c:\Users\NBE\Downloads\pdfia\api
+python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+Voici ce qui fonctionne réellement :
+
+✅ http://localhost:8000/health → retourne {"status": "ok"}
+✅ http://localhost:8000/docs → documentation Swagger interactive
+✅ http://localhost:8000/api/query → endpoint principal (POST)

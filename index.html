@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="x-poe-datastore-behavior" content="local_only">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: http://localhost:8000 http://127.0.0.1:8000 https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self' blob:; connect-src 'self' http://localhost:8000 http://127.0.0.1:8000 https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Insight AI - Analyseur de Documents Local</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                    <h1>PDF Insight AI</h1>
+                    <p class="tagline">Analyseur de Documents Intelligent</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Zone d'upload -->
+        <div class="upload-section" id="drop-zone">
+            <div class="upload-content">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Charger votre document PDF</h3>
+                <p class="upload-subtitle">Glissez-déposez votre fichier ici ou cliquez pour sélectionner</p>
+                <label for="file-input" class="file-input-label">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Choisir un PDF</span>
+                </label>
+                <input type="file" id="file-input" accept="application/pdf">
+                <div class="file-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Fichier supporté : PDF • Taille maximale : 50 MB</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="doc-status" id="status-bar">
+            <div class="status-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="status-content">
+                <span class="status-title">Document chargé avec succès</span>
+                <span id="status-text" class="status-detail">Prêt pour l'analyse. Posez une question.</span>
+            </div>
+        </div>
+
+        <!-- Interface de Chat -->
+        <div class="chat-interface" id="chat-ui">
+            <div class="chat-container">
+                <div class="input-section">
+                    <div class="input-group">
+                        <input type="text" id="user-query" placeholder="Posez une question sur le contenu du PDF..." maxlength="500">
+                        <button id="ask-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Analyser</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="loading-spinner" id="loader">
+                    <div class="spinner">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <p>L'IA parcourt le document...</p>
+                </div>
+
+                <div class="results-area" id="chat-history">
+                    <div class="empty-state">
+                        <i class="fas fa-comments"></i>
+                        <p>Les réponses apparaîtront ici après analyse.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-item">
+                <i class="fas fa-lock"></i>
+                <span>Traitement 100% local</span>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-ban"></i>
+                <span>Aucune donnée n'est envoyée au serveur</span>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-rocket"></i>
+                <span>Propulsé par PDF.js</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
